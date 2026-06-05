@@ -51,11 +51,11 @@ pip install -r requirements.txt
 streamlit run app.py
 
 ```
+
 ## 📊 Result & Visuals
 The model successfully identifies stock price patterns and trends. The final output is an interactive graph where:
+* **Blue Line:** Historical Training Data
+* **Green Line:** Actual Current Price
+* **Red Line:** Predicted Price
 
-- Blue Line: Historical Training Data
-- Green Line: Actual Current Price
-- Red Line: Predicted Price
-
-Designed and Developed for demonstrating Time-Series Data Forecasting using Deep Learning.
+![Model Prediction Result](Stock-Price-Predictor.png)
