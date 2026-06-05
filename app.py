@@ -47,7 +47,7 @@ if st.button('Predict Price'):
         x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
 
         # 2. Load the saved model
-        model = load_model('stock_model.h5')
+        model = load_model('stock_model.keras')
 
         # 3. Predictions
         predictions = model.predict(x_test)
