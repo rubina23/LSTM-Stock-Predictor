@@ -33,7 +33,7 @@ st.write("---")
 
 # 2. Start Prediction
 if st.button('Predict Future Price'):
-    with st.spinner('AI model is calculating... Please wait...'):
+    with st.spinner('Model is calculating... Please wait...'):
         
         # Prepare Data (Scaling)
         dataset = data['Close'].values.reshape(-1, 1)
