@@ -9,8 +9,8 @@ from tensorflow.keras.layers import Input, Dense, LSTM, Dropout
 
 # Main website settings
 st.set_page_config(page_title="সহজ Stock Predictor", layout="wide")
-st.title('📈 Simple Stock Market Price Predictor App')
-st.write('This app uses AI (LSTM model) to analyze historical data and predict future stock prices!')
+st.title('📈 Simple Stock Market Price Predictor')
+st.write('This app uses LSTM model to analyze historical data and predict future stock prices!')
 
 # Sidebar - User input area
 st.sidebar.header('Provide Your Preferences')
@@ -72,7 +72,7 @@ if st.button('Predict Future Price'):
         valid = data[training_data_len:].copy()
         valid['Predictions'] = predictions
 
-        st.subheader('রResult: Actual Price vs Predicted Price')
+        st.subheader('Result: Actual Price vs Predicted Price')
         fig2 = plt.figure(figsize=(16, 8))
         plt.plot(train['Close'], color='blue', label='Historical Price')
         plt.plot(valid['Close'], color='green', label='Actual Price (Current)')
