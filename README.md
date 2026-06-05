@@ -56,6 +56,6 @@ The model successfully identifies stock price patterns and trends. The final out
 
 - Blue Line: Historical Training Data
 - Green Line: Actual Current Price
-- Red Line: AI Predicted Price
+- Red Line: Predicted Price
 
 Designed and Developed for demonstrating Time-Series Data Forecasting using Deep Learning.
