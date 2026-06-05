@@ -7,18 +7,18 @@ from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import load_model
 
 st.set_page_config(page_title="Stock Predictor", layout="wide")
-st.title('📈 Stock Market Price Predictor (Pro Version)')
-st.write('এই অ্যাপটি একটি আগে থেকে ট্রেইন করা (Pre-trained) LSTM মডেল ব্যবহার করে চোখের পলকে প্রেডিকশন করতে পারে!')
+st.title('📈 Stock Market Price Predictor')
+st.write('This app uses a pre-trained LSTM model to predict future stock prices')
 
-st.sidebar.header('ইউজার ইনপুট')
-ticker = st.sidebar.text_input('কোম্পানির কোড (যেমন: AAPL, GOOGL, MSFT)', 'AAPL')
-start_date = st.sidebar.date_input('শুরুর তারিখ', pd.to_datetime('2015-01-01'))
-end_date = st.sidebar.date_input('শেষের তারিখ', pd.to_datetime('2023-01-01'))
+st.sidebar.header('User Input')
+ticker = st.sidebar.text_input('Company Ticker (e.g., AAPL, GOOGL, MSFT)', 'AAPL')
+start_date = st.sidebar.date_input('Start Date', pd.to_datetime('2015-01-01'))
+end_date = st.sidebar.date_input('End Date', pd.to_datetime('2023-01-01'))
 
-# ডেটা ডাউনলোড
+# Download Data
 data = yf.download(ticker, start=start_date, end=end_date)
 
-st.subheader(f'**{ticker}**-এর ঐতিহাসিক ডেটা')
+st.subheader(f'**{ticker}**- Historical Data')
 fig1 = plt.figure(figsize=(12, 6))
 plt.plot(data['Close'], label='Close Price', color='blue')
 plt.xlabel('Date')
@@ -29,9 +29,9 @@ st.pyplot(fig1)
 st.write("---")
 
 if st.button('Predict Price'):
-    with st.spinner('মডেল প্রেডিক্ট করছে...'):
+    with st.spinner('Model is predicting...'):
         
-        # ১. ডেটা প্রসেসিং
+        # 1. Data Processing
         dataset = data['Close'].values.reshape(-1, 1)
         scaler = MinMaxScaler(feature_range=(0, 1))
         scaled_data = scaler.fit_transform(dataset)
@@ -46,14 +46,14 @@ if st.button('Predict Price'):
         x_test = np.array(x_test)
         x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
 
-        # ২. সেভ করা মডেল লোড করা (ম্যাজিক লাইন!)
+        # 2. Load the saved model
         model = load_model('stock_model.h5')
 
-        # ৩. প্রেডিকশন বের করা
+        # 3. Predictions
         predictions = model.predict(x_test)
         predictions = scaler.inverse_transform(predictions)
 
-        # ৪. গ্রাফ তৈরি
+        # 4. Create Graph
         train = data[:training_data_len]
         valid = data[training_data_len:].copy()
         valid['Predictions'] = predictions
@@ -66,4 +66,4 @@ if st.button('Predict Price'):
         plt.legend()
         st.pyplot(fig2)
         
-        st.success('✅ মাত্র কয়েক সেকেন্ডেই প্রেডিকশন সফলভাবে সম্পন্ন হয়েছে!')
+        st.success('✅ Prediction completed successfully!')
