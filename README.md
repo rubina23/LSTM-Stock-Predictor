@@ -37,7 +37,7 @@ If you want to test this project on your local machine, follow these steps:
 
 **1. Clone the repository:**
 ```bash
-git clone [https://github.com/your-username/LSTM-Stock-Predictor.git](https://github.com/your-username/LSTM-Stock-Predictor.git)
+git clone https://github.com/rubina23/LSTM-Stock-Predictor.git
 cd LSTM-Stock-Predictor
 
 ```
