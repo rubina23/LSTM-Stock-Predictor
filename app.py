@@ -9,7 +9,7 @@ from tensorflow.keras.layers import Input, Dense, LSTM, Dropout
 
 # Main website settings
 st.set_page_config(page_title="Stock Predictor", layout="wide")
-st.title('📈 Simple Stock Market Price Predictor')
+st.title('📈 Stock Market Price Predictor')
 st.write('This app uses LSTM model to analyze historical data and predict future stock prices!')
 
 # Sidebar - User input area
